@@ -4,7 +4,7 @@ class FetchesController < ApplicationController
   def index
     response = HTTParty.get('http://api.citybik.es/v2/networks/velib', format: :plain)
     @response = JSON.parse response, symbolize_names: true
-    @response[:network][:stations] do |station|
+    @response[:network][:stations].each do |station|
       Bikeestation.create(
         station_id: station[:id],
         empty_slots: station[:empty_slots],

@@ -1,47 +1,4 @@
-<br> 
-<center><div class="container">
-   <div class="card" style="width: 18rem;">
-   <%= image_tag asset_path('bikee_logo.jpg') %>
-      <div class="card-body">
-         <h1 class="card-text">My Bikee.</h1>
-      </div>
-   </div><br> 
-</div><center>
-
- <div id="mapid"></div>
-
- <%# <script>
-
-    var mymap = L.map('mapid').setView([48.85, 2.35], 16);
-
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1Ijoibmljb3pmIiwiYSI6ImNqeDV0Z3pqajA1NWY0M3F0ajhqMzl5eXQifQ.IlrJnYSW7f_TH5FTUu-Btg'
-    }).addTo(mymap);
-
- </script> %>
-
-
-
-<div class="container">
-  <%= form_tag root_path, method: :get, remote: true do %>
-  <div class="row">
-    <div class="m-3">
-      "quelle est ton adresse petit père"
-    </div>
-    <div class="m-3">
-      <%= text_field_tag 'address','', class: "form-control form-control-sm", placeholder:"Ton Adresse"%>
-    </div>
-    <div class="m-3">
-      <%= submit_tag "Search", class: "btn btn-outline-info btn-sm " %>
-    </div>
-  </div>
-  <% end %><br/>
-
-
-  <div class="list">
+<div class="list">
   <% if @bikeestations == nil %>
   <% elsif @bikeestations.length != 0 %>
     <table class="table">
@@ -66,31 +23,28 @@
     <div style="color: red">Enter a valid adress</div>
   <% end %>
   </div>
+</div>
 
 
 <script>
+  map.off();
+  map.remove();
   <% if @bikeestations == nil %>
-
-    var mymap = L.map('mapid').setView([48.85, 2.35], 16);
-
+    var map = L.map('map').setView([48.8721312, 2.3466598], 16);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoibmljb3pmIiwiYSI6ImNqeDV0Z3pqajA1NWY0M3F0ajhqMzl5eXQifQ.IlrJnYSW7f_TH5FTUu-Btg'
     }).addTo(mymap);
-
   <% elsif @bikeestations.length != 0 %>
-
-    var mymap = L.map('mapid').setView([<%= @latitude %>, <%= @longitude %>], 16);
-
+    var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 16);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoibmljb3pmIiwiYSI6ImNqeDV0Z3pqajA1NWY0M3F0ajhqMzl5eXQifQ.IlrJnYSW7f_TH5FTUu-Btg'
     }).addTo(mymap);
-
     var circle = L.circle([<%= @latitude %>, <%= @longitude %>], {
       color: 'red',
       fillColor: '#f03',
@@ -98,22 +52,18 @@
       radius: 10
     }).addTo(map)
     .bindPopup("You're here");;
- 
+  
     <% @bikeestations.each do |elem| %>
     L.marker([<%= elem.latitude %>, <%= elem.longitude %>]).addTo(map)
         .openPopup();
     <% end %>
-
   <% else %>
-
-    var mymap = L.map('mapid').setView([48.85, 2.35], 16);
-
+    var map = L.map('map').setView([48.8721312, 2.3466598], 16);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1Ijoibmljb3pmIiwiYSI6ImNqeDV0Z3pqajA1NWY0M3F0ajhqMzl5eXQifQ.IlrJnYSW7f_TH5FTUu-Btg'
     }).addTo(mymap);
-
   <% end %>
 </script>
