@@ -1,13 +1,14 @@
 <br> 
-<center> <p>Find my bikee</p>
+<center><div class="container">
+   <div class="card" style="width: 18rem;">
+   <%= image_tag asset_path('bikee_logo.jpg') %>
+      <div class="card-body">
+         <h1 class="card-text">My Bikee.</h1>
+      </div>
+   </div><br> 
+</div><center>
 
  <div id="mapid"></div>
-
- <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin="">
-</script>
-
 
  <script>
 
@@ -21,3 +22,42 @@
     }).addTo(mymap);
 
  </script>
+
+
+
+<div class="container">
+  <%= form_tag root_path, method: :get, remote: true do %>
+  <div class="row">
+    <div class="m-3">
+      "msmsms"
+    </div>
+    <div class="m-3">
+      <%= text_field_tag 'address','', class: "form-control form-control-sm", placeholder:"Ton Adresse"%>
+    </div>
+    <div class="m-3">
+      <%= submit_tag "Search", class: "btn btn-outline-info btn-sm " %>
+    </div>
+  </div>
+  <% end %><br/>
+
+
+   <div class="list">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Station</th>
+          <th scope="col">Empty slots</th>
+          <th scope="col">Free bikes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row"><%=  %></th>
+          <td><%=  %></td>
+          <td><%=  %></td>
+        </tr>
+      </tbody>
+
+    </table>
+   </div>
