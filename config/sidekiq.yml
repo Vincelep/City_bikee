@@ -6,3 +6,7 @@ production:
 :queues:
   - default
   - mailers
+:schedule:
+  stations_request_job:
+    every: 5m
+    class: StationsRequestJob
