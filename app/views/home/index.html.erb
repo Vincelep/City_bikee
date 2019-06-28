@@ -92,15 +92,14 @@
     }).addTo(mymap);
 
     var circle = L.circle([<%= @latitude %>, <%= @longitude %>], {
-      color: 'red',
-      fillColor: '#f03',
+      color: 'green',
       fillOpacity: 0.7,
       radius: 10
-    }).addTo(map)
+    }).addTo(mymap)
     .bindPopup("You're here");;
  
     <% @bikeestations.each do |elem| %>
-    L.marker([<%= elem.latitude %>, <%= elem.longitude %>]).addTo(map)
+    L.marker([<%= elem.latitude %>, <%= elem.longitude %>]).addTo(mymap)
         .openPopup();
     <% end %>
 
