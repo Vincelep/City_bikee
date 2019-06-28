@@ -9,7 +9,6 @@ class CreateBikeestations < ActiveRecord::Migration[5.2]
       t.float :latitude
       t.float :longitude
       t.string :name
-
       t.timestamps
     end
   end
