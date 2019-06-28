@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
 gem 'httparty', '~> 0.17.0'
 gem 'pry'
+gem 'sidekiq-scheduler', '~> 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
