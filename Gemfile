@@ -39,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
-gem 'httparty', '~> 0.17.0'
+gem 'httparty', '~> 0.21.0'
 gem 'pry'
 gem 'sidekiq-scheduler', '~> 3.0'
 
